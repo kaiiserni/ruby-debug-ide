@@ -30,7 +30,7 @@ EOF
 
   spec.version = RUBY_DEBUG_IDE_VERSION
 
-  spec.author = "Markus Barchfeld, Martin Krauskopf, Mark Moseley, JetBrains RubyMine Team"
+  spec.author = "Markus Barchfeld, Martin Krauskopf, Mark Moseley, JetBrains RubyMine Team", "kaiiserni"
   spec.email = "rubymine-feedback@jetbrains.com"
   spec.platform = Gem::Platform::RUBY
   spec.require_path = "lib"
@@ -40,11 +40,13 @@ EOF
 
   spec.extensions << "ext/mkrf_conf.rb" unless ENV['NO_EXT']
   spec.add_dependency("rake", ">= 0.8.1")
-
+  
   spec.required_ruby_version = '>= 1.8.2'
   spec.date = DateTime.now
   spec.rubyforge_project = 'debug-commons'
-
+  
+  spec.post_install_message  = "!!! I am patched and I don't crash, even if I should, I don't, but don't take me seriously and install/try the official version first... !!!"
+  
   # rdoc
   spec.has_rdoc = false
 end

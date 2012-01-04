@@ -92,7 +92,11 @@ module Debugger
     
     def print_context(context)
       current = 'current="yes"' if context.thread == Thread.current
-      print "<thread id=\"%s\" status=\"%s\" #{current}/>", context.thnum, context.thread.status
+      begin
+        print "<thread id=\"%s\" status=\"%s\" #{current}/>", context.thnum, context.thread.status
+      rescue
+        print "ALERT! I wanted to crash, but I am patched, so I didn't. This is a reference to help me fix this more cleanly: ", context.inspect
+      end
     end
     
     def print_variables(vars, kind)
